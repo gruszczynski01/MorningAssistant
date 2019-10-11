@@ -3,5 +3,5 @@
 #Developer Team
 * Kinga Arendarska
 * Szymon Gruszczynski
-* Jalowski Dawid
+* Dawid Jalowski
 * Michal Jablonski
