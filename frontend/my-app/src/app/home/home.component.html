@@ -1,0 +1,38 @@
+<<<<<<< HEAD
+<p>home works!</p>
+
+<!-- show-data works! -->
+<h3>DANE Z BAZY DANYCH POBRANE Z COMPONENTU</h3>
+<li *ngFor="let d of data">
+  TESST
+  Moje dane: {{ d.firstname }}: {{ d.lastname }}
+</li>
+<h3>DANE Z BAZY DANYCH POBRANE Z SERWISU</h3>
+<li *ngFor="let d of dataFromService">
+  TESST
+  Moje dane: {{ d.firstname }}: {{ d.lastname }}
+</li>
+=======
+<div class="navbar">
+  Morning Assistant
+</div>
+<h3>Dane z API pogodowgo</h3>
+<div class="example-boundary">
+    <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
+        <li>
+            City: {{ dataFromService.city }}
+          </li>
+    </div>
+    <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
+        <li>
+            Temp: {{ dataFromService.temp }}
+          </li>
+      </div>
+      <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
+          <li>
+              Descirption: {{ dataFromService.desc }}
+            </li>
+        </div>
+  </div>
+
+>>>>>>> MA-34
