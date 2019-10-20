@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
-  url = '/getData/';
+  url = '/api/v1/getWeather/Legionowo';
   constructor(private http: HttpClient) { }
 
   getDataFromDB(): Observable<any> {
-      return this.http.get(this.url);
+    return this.http.get(this.url);
   }
 }
