@@ -1,22 +1,40 @@
-<div class="navbar">
-  Morning Assistant
-</div>
-<h3>Dane z API pogodowgo</h3>
-<div class="example-boundary">
+<!-- <div class="navbar">
+    <h3>Morning Assistant</h3>
+  </div> -->
+<!-- <nav class="navbar sticky-top">
+      <a class="navbar-brand" href="#">
+        Morning Assistant
+      </a>
+    </nav> -->
+<!-- <mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Mornign Assistant</span>
+  </mat-toolbar-row>
+</mat-toolbar> -->
+
+<mat-toolbar class="app-toolbar" color="primary">
+  <span class='application-title'>Morning Assistant</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+  <fa-icon [icon]="faUserAlt"></fa-icon>
+</mat-toolbar>
+<div class="main-content">
+  <div class="example-boundary">
     <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
-        <li>
-            City: {{ dataFromService.city }}
-          </li>
+      <li>
+        City: {{ dataFromService.city }}
+      </li>
     </div>
     <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
-        <li>
-            Temp: {{ dataFromService.temp }}
-          </li>
-      </div>
-      <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
-          <li>
-              Descirption: {{ dataFromService.desc }}
-            </li>
-        </div>
+      <li>
+        Temp: {{ dataFromService.temp }}
+      </li>
+    </div>
+    <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
+      <li>
+        Descirption: {{ dataFromService.desc }}
+      </li>
+    </div>
   </div>
-
+</div>

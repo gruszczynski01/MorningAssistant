@@ -6,10 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MainService {
-  url = '/api/v1/getWeather/Legionowo';
   constructor(private http: HttpClient) { }
 
-  getDataFromDB(): Observable<any> {
-    return this.http.get(this.url);
+  getDataFromDB(city: string): Observable<any> {
+    return this.http.get('/api/v1/getWeather/' + city);
   }
 }

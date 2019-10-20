@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 .example-box {
   width: 200px;
   height: 200px;
@@ -34,27 +35,60 @@
   border: dotted #ccc 2px;
 }
 /* The navigation bar */
-.navbar {
+.my-navbar {
   /* overflow: hidden; */
-  background-color: red;
+  background-color: #CBDBD7;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
+  height: 50px;
   z-index: 10;
-  padding: 2px;
+  /* padding: 2px; */
   /* margin: 20px; */
 }
 
-/* Links inside the navbar
-.navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-} */
+/* Links inside the navbar */
+.application-title {
+  color: #FCFFF5;
+  font-family: 'Quicksand', sans-serif;
 
+
+}
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+.app-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+/*
+.main-content {
+  margin-top: 50px;
+} */
+/* Color Theme Swatches in Hex */
+.Neutral-Blue-1-hex { color: #FCFFF5; }
+.Neutral-Blue-2-hex { color: #CBDBD7; }
+.Neutral-Blue-3-hex { color: #91AAB4; }
+.Neutral-Blue-4-hex { color: #3E606F; }
+.Neutral-Blue-5-hex { color: #193441; }
+
+/* Color Theme Swatches in RGBA */
+.Neutral-Blue-1-rgba { color: rgba(251, 255, 244, 1); }
+.Neutral-Blue-2-rgba { color: rgba(202, 219, 214, 1); }
+.Neutral-Blue-3-rgba { color: rgba(144, 170, 179, 1); }
+.Neutral-Blue-4-rgba { color: rgba(61, 96, 110, 1); }
+.Neutral-Blue-5-rgba { color: rgba(24, 52, 65, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Neutral-Blue-1-hsla { color: hsla(78, 100, 98, 1); }
+.Neutral-Blue-2-hsla { color: hsla(164, 18, 82, 1); }
+.Neutral-Blue-3-hsla { color: hsla(197, 18, 63, 1); }
+.Neutral-Blue-4-hsla { color: hsla(198, 28, 33, 1); }
+.Neutral-Blue-5-hsla { color: hsla(199, 44, 17, 1); }
 /* Change background on mouse-over */
 /* .navbar a:hover {
   background: #ddd;
