@@ -8,10 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { MainService } from './services/main.service';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
-=======
 import {DragDropModule} from '@angular/cdk/drag-drop';
->>>>>>> MA-34
 
 @NgModule({
   declarations: [
@@ -23,12 +20,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
   imports: [
     BrowserModule,
     AppRoutingModule,
-<<<<<<< HEAD
-    HttpClientModule
-=======
     HttpClientModule,
     DragDropModule
->>>>>>> MA-34
   ],
   providers: [MainService],
   bootstrap: [AppComponent]
