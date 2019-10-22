@@ -17,10 +17,18 @@
 
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
+  <!-- <fa-icon [icon]="faHome"></fa-icon> -->
   <fa-icon [icon]="faUserAlt"></fa-icon>
 </mat-toolbar>
 <div class="main-content">
-  <div class="example-boundary">
+
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <ng-container *ngFor="let movie of movies; let i = index">
+      <div *ngIf="movie!='TO DO LISTA'" class="example-box" cdkDrag>{{movie}}</div>
+      <div *ngIf="movie=='TO DO LISTA'" class="example-box2" cdkDrag>{{movie}}</div>
+    </ng-container>
+  </div>
+  <!-- <div class="example-boundary">
     <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
       <li>
         City: {{ dataFromService.city }}
@@ -36,5 +44,5 @@
         Descirption: {{ dataFromService.desc }}
       </li>
     </div>
-  </div>
+  </div> -->
 </div>
