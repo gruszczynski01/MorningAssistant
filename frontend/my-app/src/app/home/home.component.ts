@@ -12,26 +12,41 @@ import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 export class HomeComponent implements OnInit {
   faUserAlt = faUserAlt;
   faHome = faHome;
-  dataFromService: any;
-  movies = [
-    'NEWS',
-    'POGODA',
-    'TO DO LISTA',
-    'KALENDAR'
-  ];
-
+  weatherData: any;
+  tiles;
+  dataTEMP;
 
   constructor(private mainService: MainService, private http: HttpClient) { }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.tiles, event.previousIndex, event.currentIndex);
   }
 
 
   ngOnInit() {
-    this.mainService.getDataFromDB('Łuków').subscribe(data => {
-      this.dataFromService = data as [any];
+    this.mainService.getDataFromDB('Legionowo').subscribe(data => {
+      //tech
+      this.dataTEMP = data;
+      this.weatherData = data as [any];
+      this.weatherData.icon = 'http://openweathermap.org/img/wn/' + data.icon + '@2x.png';
     });
+    console.log(this.dataTEMP);
+    // tslint:disable-next-line: one-variable-per-declaration
+    const news = {};
+    const weather = {};
+    const toDoList = {};
+    const calendar = {};
+
+    // tslint:disable-next-line: no-string-literal
+    news['type'] = 'news';
+    // tslint:disable-next-line: no-string-literal
+    weather['type'] = 'weather';
+    // tslint:disable-next-line: no-string-literal
+    toDoList['type'] = 'toDoList';
+    // tslint:disable-next-line: no-string-literal
+    calendar['type'] = 'calendar';
+
+    this.tiles = new Array(news, weather, toDoList, calendar);
 
   }
 

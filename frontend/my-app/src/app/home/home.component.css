@@ -1,58 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-/* .example-box {
-  width: 200px;
-  height: 200px;
-  border: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
-  cursor: move;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: #fff;
-  border-radius: 4px;
-  margin-right: 25px;
-  position: relative;
-  z-index: 1;
-  box-sizing: border-box;
-  padding: 10px;
-  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-              0 2px 2px 0 rgba(0, 0, 0, 0.14),
-              0 1px 5px 0 rgba(0, 0, 0, 0.12);
-}
-
-.example-box:active {
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-              0 8px 10px 1px rgba(0, 0, 0, 0.14),
-              0 3px 14px 2px rgba(0, 0, 0, 0.12);
-} */
-
-.example-boundary {
-  width: 100%;
-  height: 2000px;
-  max-width: 100%;
-  border: dotted #ccc 2px;
-}
-/* The navigation bar */
-.my-navbar {
-  /* overflow: hidden; */
-  background-color: #CBDBD7;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-  height: 50px;
-  z-index: 10;
-  /* padding: 2px; */
-  /* margin: 20px; */
-}
 
 /* Links inside the navbar */
 .application-title {
   color: #FCFFF5;
   font-family: 'Quicksand', sans-serif;
-
-
 }
 .example-fill-remaining-space {
   /* This fills the remaining space, by using flexbox.
@@ -60,15 +11,46 @@
   flex: 1 1 auto;
 }
 .app-toolbar {
+  background: rgba(0, 0, 0, 0.5);
   position: sticky;
   position: -webkit-sticky; /* For macOS/iOS Safari */
   top: 0; /* Sets the sticky toolbar to be on top */
   z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
 }
-/*
+.bodyClass {
+  height: 120vh;
+  background-image: url('https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80');
+  background-size: cover;
+  background-position: center;
+}
+.account-icon {
+  background: burlywood;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 35px;
+  width: 35px;
+  height: 35px;
+  border: 1.5px solid rgb(163, 112, 78);
+}
+/*written by Pysia*/
 .main-content {
-  margin-top: 50px;
-} */
+  /* position: relative; */
+  padding-top: 30px;
+}
+.tiles {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+
+
+
+
+
+
+
+
 /* Color Theme Swatches in Hex */
 .Neutral-Blue-1-hex { color: #FCFFF5; }
 .Neutral-Blue-2-hex { color: #CBDBD7; }
@@ -86,6 +68,7 @@
 /* Color Theme Swatches in HSLA */
 .Neutral-Blue-1-hsla { color: hsla(78, 100, 98, 1); }
 .Neutral-Blue-2-hsla { color: hsla(164, 18, 82, 1); }
+
 .Neutral-Blue-3-hsla { color: hsla(197, 18, 63, 1); }
 .Neutral-Blue-4-hsla { color: hsla(198, 28, 33, 1); }
 .Neutral-Blue-5-hsla { color: hsla(199, 44, 17, 1); }
@@ -96,23 +79,27 @@
 } */
 
 
-/* *************** */
 
+/* ********************   cdkDropList   ********************** */
 .example-list {
-  width: 500px;
+  width: 50vw;
   max-width: 100%;
-  border: solid 1px #ccc;
+  background: rgba(0, 0, 0, 0);
+  /* border: solid 1px #ccc; */
   min-height: 60px;
   display: block;
-  background: white;
+
   border-radius: 4px;
   overflow: hidden;
 }
 
 .example-box {
+
+  margin: 20px;
   padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
+  border: solid 1px #ccc;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -123,8 +110,11 @@
   font-size: 14px;
 }
 .example-box2 {
+  margin: 20px;
+
   padding: 80px 10px;
-  border-bottom: solid 1px #ccc;
+  border: solid 1px #ccc;
+  border-radius: 10px;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
   flex-direction: row;
@@ -135,6 +125,52 @@
   background: white;
   font-size: 14px;
 }
+.weather-tile {
+  font-family: 'Quicksand', sans-serif;
+  margin: 20px;
+  padding: 5vmin;
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  cursor: move;
+  background: linear-gradient(to bottom right, #6ac0eb, rgb(30, 141, 168));
+  font-size: 50px;
+  flex-wrap: wrap;
+}
+.weather-tile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.weather-icon-background {
+  background: linear-gradient(to bottom right, #6ac0eb,  rgb(30, 141, 168));
+  border: none;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 150px;
+  width: 150px;
+  height: 150px;
+  /* border: 1.5px solid rgb(163, 112, 78); */
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+
+.temp {
+  border-bottom: 2px solid linear-gradient(right, #6ac0eb, #f0f0f0, #6ac0eb);
+}
+
 
 .cdk-drag-preview {
   box-sizing: border-box;
@@ -145,11 +181,12 @@
 }
 
 .cdk-drag-placeholder {
-  opacity: 0;
+  opacity: 0.5;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 500ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 .example-box:last-child {
@@ -159,3 +196,4 @@
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+/* ********************   cdkDropList END  ********************** */
