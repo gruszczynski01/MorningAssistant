@@ -1,22 +1,39 @@
-<div class="navbar">
-  Morning Assistant
-</div>
-<h3>Dane z API pogodowgo</h3>
-<div class="example-boundary">
-    <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
-        <li>
-            City: {{ dataFromService.city }}
-          </li>
-    </div>
-    <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
-        <li>
-            Temp: {{ dataFromService.temp }}
-          </li>
-      </div>
-      <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
-          <li>
-              Descirption: {{ dataFromService.desc }}
-            </li>
-        </div>
-  </div>
+<div class="bodyClass">
+  <mat-toolbar class="app-toolbar" color="primary">
+    <span class='application-title'>Morning Assistant</span>
 
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+    <!-- <fa-icon [icon]="faHome"></fa-icon> -->
+    <div class="account-icon">
+      <fa-icon [icon]="faUserAlt"></fa-icon>
+    </div>
+  </mat-toolbar>
+
+  <div class="main-content">
+    <div class="tiles">
+      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+        <ng-container *ngFor="let tile of tiles; let i = index">
+          <div *ngIf="tile.type=='weather'" class="weather-tile" cdkDrag>
+            <div class="weather-tile-info">
+              {{weatherData.city}}
+            </div>
+
+            <div class="weather-tile-info">
+              <span class="temp"> {{weatherData.temp}} &#176;C</span>
+              {{weatherData.desc | uppercase }}
+            </div>
+            <div class="weather-tile-icon">
+              <div class="weather-icon-background">
+                <img src={{weatherData.icon}} width="150px" height="150px">
+              </div>
+            </div>
+          </div>
+          <div *ngIf="tile.type=='news'" class="example-box" cdkDrag>{{tile.type}}</div>
+          <div *ngIf="tile.type=='toDoList'" class="example-box2" cdkDrag>{{tile.type}}</div>
+          <div *ngIf="tile.type=='calendar'" class="example-box2" cdkDrag>{{tile.type}}</div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

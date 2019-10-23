@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MainService {
-  url = '/api/v1/getWeather/Legionowo';
+  // tslint:disable-next-line: variable-name
+  base_url = 'http://localhost:8000';
   constructor(private http: HttpClient) { }
 
-  getDataFromDB(): Observable<any> {
-    return this.http.get(this.url);
+  getDataFromDB(city: string): Observable<any> {
+    return this.http.get(this.base_url + '/api/v1/getWeather/' + city);
   }
 }

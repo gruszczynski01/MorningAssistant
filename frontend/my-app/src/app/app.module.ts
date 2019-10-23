@@ -9,6 +9,11 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { MainService } from './services/main.service';
 import { HttpClientModule } from '@angular/common/http';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatToolbarModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,12 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    MatToolbarModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    FontAwesomeModule,
+    MatDividerModule
   ],
   providers: [MainService],
   bootstrap: [AppComponent]
