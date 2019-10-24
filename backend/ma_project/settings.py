@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'ma_app',
     'rest_framework',
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
@@ -64,7 +66,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True   
+
 
 ROOT_URLCONF = 'ma_project.urls'
 

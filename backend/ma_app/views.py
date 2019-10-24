@@ -3,7 +3,6 @@ from django.shortcuts import render
 import os 
 import requests
 from requests_html import HTML, HTMLSession
-from ma_project.secret_settings import *
 from pprint import pprint
 
 class FrontendRenderView(View):
@@ -22,7 +21,8 @@ def get_weather_from_web(city):
     if status == 200:
         temp = r['main']['temp']
         desc = r['weather'][0]['description']
-        icon = 'http://openweathermap.org/img/wn/' + r['weather'][0]['icon'] + '@2x.png'
+        # icon = 'http://openweathermap.org/img/wn/' + r['weather'][0]['icon'] + '@2x.png'
+        icon = r['weather'][0]['icon']
         weather = {'city': city, 'temp': round(temp), 'desc': desc, 'icon': icon, 'status': status}
     else :
         weather = {'status': status }
