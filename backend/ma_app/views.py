@@ -21,8 +21,7 @@ def get_weather_from_web(city):
     if status == 200:
         temp = r['main']['temp']
         desc = r['weather'][0]['description']
-        # icon = 'http://openweathermap.org/img/wn/' + r['weather'][0]['icon'] + '@2x.png'
-        icon = r['weather'][0]['icon']
+        icon = 'http://openweathermap.org/img/wn/' + r['weather'][0]['icon'] + '@2x.png'
         weather = {'city': city, 'temp': round(temp), 'desc': desc, 'icon': icon, 'status': status}
     else :
         weather = {'status': status }
