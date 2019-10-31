@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
       //tech
       this.dataTEMP = data;
       this.weatherData = data as [any];
-      this.weatherData.icon = 'http://openweathermap.org/img/wn/' + data.icon + '@2x.png';
+      this.weatherData.icon = data.icon;
     });
     console.log(this.dataTEMP);
     // tslint:disable-next-line: one-variable-per-declaration

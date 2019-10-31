@@ -3,7 +3,6 @@ from django.shortcuts import render
 import os 
 import requests
 from requests_html import HTML, HTMLSession
-from ma_project.secret_settings import *
 from pprint import pprint
 
 class FrontendRenderView(View):
