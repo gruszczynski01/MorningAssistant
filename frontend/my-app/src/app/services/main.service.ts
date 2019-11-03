@@ -10,7 +10,11 @@ export class MainService {
   base_url = 'http://localhost:8000';
   constructor(private http: HttpClient) { }
 
-  getDataFromDB(city: string): Observable<any> {
+  getWeatherData(city: string): Observable<any> {
     return this.http.get(this.base_url + '/api/v1/getWeather/' + city);
   }
+  getNewsData(category: string): Observable<any> {
+    return this.http.get(this.base_url + '/api/v1/getNews/' + category);
+  }
+
 }
