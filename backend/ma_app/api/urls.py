@@ -1,7 +1,12 @@
 from django.urls import path
 from . import views
+from rest_framework.authtoken.views import obtain_auth_token  # <-- Here
 
 urlpatterns = [
-    path('getWeather/<sent_city>', views.get_weather),
-    path('getNews/<sent_category>', views.get_news),
+    path('weather/<sent_city>', views.Weather.as_view()),
+    path('news/<sent_category>', views.News.as_view()),
+    path('obtain-token', obtain_auth_token, name='api_token_auth'),  # <-- And here
+
 ]
+
+

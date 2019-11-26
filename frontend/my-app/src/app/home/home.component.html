@@ -1,6 +1,9 @@
 <div class="bodyClass">
   <mat-toolbar class="app-toolbar" color="primary">
     <span class='application-title'>Morning Assistant</span>
+    <span class="example-fill-remaining-space"></span>
+    <span class='application-title'>{{currentTime | date:'mediumTime' }}</span>
+
 
     <!-- This fills the remaining space of the current row -->
     <span class="example-fill-remaining-space"></span>
@@ -9,12 +12,11 @@
       <fa-icon [icon]="faUserAlt"></fa-icon>
     </div>
   </mat-toolbar>
-
   <div class="main-content">
     <div class="tiles">
       <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
         <ng-container *ngFor="let tile of tiles; let i = index">
-          <div *ngIf="tile.type=='weather'" class="weather-tile" cdkDrag>
+          <div *ngIf="tile.type=='weather'" class="small-weather-tile" cdkDrag>
             <div class="weather-tile-info">
               {{weatherData.city}}
             </div>
@@ -29,9 +31,50 @@
               </div>
             </div>
           </div>
-          <div *ngIf="tile.type=='news'" class="example-box" cdkDrag>{{tile.type}}</div>
-          <div *ngIf="tile.type=='toDoList'" class="example-box2" cdkDrag>{{tile.type}}</div>
-          <div *ngIf="tile.type=='calendar'" class="example-box2" cdkDrag>{{tile.type}}</div>
+          <div *ngIf="tile.type=='news'" class="small-news-tile" title="{{newsData[newsIndex].desc}}" cdkDrag>
+              <div class="news-tile-info">
+                  <div class="news-tile-image">
+                      {{tile.category | uppercase}}
+                      <img class="newsImage"src={{newsData[newsIndex].imageToUrl}} width="250px" height="150px">
+                  </div>
+                </div>
+
+            <div class="news-tile-info">
+                {{newsData[newsIndex].title}}
+              </div>
+          </div>
+          <div *ngIf="tile.type=='toDoList'" class="to_do-tile" cdkDrag>
+              <div class="to_do-container">
+                  <h2>To do</h2>
+
+                  <div
+                    cdkDropList
+                    #todoList="cdkDropList"
+                    [cdkDropListData]="todo"
+                    [cdkDropListConnectedTo]="[doneList]"
+                    class="to_do-list"
+                    (cdkDropListDropped)="dropToDo($event)">
+                    <div class="to_do-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                  </div>
+                </div>
+
+                <div class="to_do-container">
+                  <h2>Done</h2>
+
+                  <div
+                    cdkDropList
+                    #doneList="cdkDropList"
+                    [cdkDropListData]="done"
+                    [cdkDropListConnectedTo]="[todoList]"
+                    class="to_do-list"
+                    (cdkDropListDropped)="dropToDo($event)">
+                    <div class="done-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+                  </div>
+                </div>
+          </div>
+          <div *ngIf="tile.type=='calendar'" class="calendar-tile" cdkDrag>
+              Kalendarz
+              <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%237CB342&amp;ctz=Europe%2FWarsaw&amp;src=Z3J1c3pjenluc2tpMDFAZ21haWwuY29t&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=MzVyN29pOGZlZmFtbXMzM2I5OXNyazhzYzhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=NHZhYXM0MjhiZWc5ZDJlbWlqNzYwZ2NqZG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=bWlyNHQ5NDRub2hrc3I1YTY1cXU0MXBmaTRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ajRjaG02M2JvY3RrdGU1anEzMWRhNW1pNnNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=cGwucG9saXNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23F6BF26&amp;color=%2333B679&amp;color=%234285F4&amp;color=%23E67C73&amp;color=%23E67C73&amp;color=%2333B679&amp;color=%230B8043&amp;mode=AGENDA&amp;showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0"  width="100%" height="300" frameborder="0" scrolling="no"></iframe>          </div>
         </ng-container>
       </div>
     </div>
