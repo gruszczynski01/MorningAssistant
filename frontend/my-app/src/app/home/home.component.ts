@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   weatherData: any;
   newsData: any;
   tokenData: any;
+  token: any;
   tiles;
   dataTEMP;
   newsIndex = 0;
@@ -56,15 +57,19 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mainService.getToken().subscribe(data => {
+      var tkn;
+      this.mainService.getToken().subscribe(data => {
       this.tokenData = data as [any];
+      tkn = this.tokenData['token'];
+      this.mainService.setToken(tkn);
+      console.log("shit" + tkn);
     });
-
-    this.mainService.getWeatherData('Warszawa', this.tokenData).subscribe(data => {
+    console.log("shit2" + tkn);
+    this.mainService.getWeatherData('Warszawa').subscribe(data => {
       this.weatherData = data as [any];
     });
 
-    this.mainService.getNewsData('sports', this.tokenData).subscribe(data => {
+    this.mainService.getNewsData('sports').subscribe(data => {
       this.newsData = data as [any];
 
     });
