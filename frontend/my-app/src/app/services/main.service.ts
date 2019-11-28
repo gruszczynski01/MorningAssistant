@@ -20,14 +20,14 @@ export class MainService {
 
   getWeatherData(city: string): Observable<any> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const headers = { 'Authorization': 'Token ' + '9981c29d36cf5d7ef262fa628643c7264702058a' };
+    const headers = { 'Authorization': 'Token ' + 'ENTER_YOUR_TOKEN' };
     const httpHeaders = new HttpHeaders(headers);
     return this.http.get(this.base_url + '/api/v1/weather/' + city, { headers });
   }
 
   getNewsData(category: string): Observable<any> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const headers = { 'Authorization': 'Token ' + '9981c29d36cf5d7ef262fa628643c7264702058a' };
+    const headers = { 'Authorization': 'Token ' + 'ENTER_YOUR_TOKEN' };
     const httpHeaders = new HttpHeaders(headers);
     return this.http.get(this.base_url + '/api/v1/news/' + category, { headers });
   }
