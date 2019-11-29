@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
     'ma_app',
+    'users',
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',  # <-- Here
@@ -64,9 +65,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+MIDDLEWARE_CLASSES = ['django.middleware.csrf.CsrfViewMiddleware']
 
 CORS_ORIGIN_ALLOW_ALL = True   
-
+SESSION_COOKIE_SECURE = True
 
 ROOT_URLCONF = 'ma_project.urls'
 

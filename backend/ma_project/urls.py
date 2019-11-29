@@ -5,5 +5,6 @@ from ma_app.views import FrontendRenderView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('ma_app.api.urls')), 
+    path('users/', include('users.urls')), 
     re_path(r'(?P<path>.*)', FrontendRenderView.as_view(), name = "home")
 ]                      
