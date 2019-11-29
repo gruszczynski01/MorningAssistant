@@ -1,27 +1,30 @@
-<div class="header">
-  <div class="logo">Morning Assistant</div>
-</div>
-<div class = "login">
+<div class="body-class">
+  <div class="header">
+    <div class="logo">Morning Assistant</div>
+  </div>
+  <div class="login">
 
-  <div class = "avatar">
+    <div class="avatar">
       <i class="fa fa-user"></i>
-  </div>
+    </div>
 
-  <h2>Login form</h2>
+    <h2>Login form</h2>
 
-  <div class = "box-login">
+    <div class="box-login">
       <i class="fas fa-envelope"></i>
-      <input type = "text" placeholder="Email">
-  </div>
+      <input type="text" placeholder="Email" [(ngModel)]="username">
+    </div>
 
-  <div class = "box-login">
+    <div class="box-login">
       <i class="fas fa-lock"></i>
-      <input type = "password" placeholder="Password">
-  </div>
+      <input type="password" placeholder="Password" [(ngModel)]="password">
+    </div>
 
-  <button type="submit" class="btn-login">Login</button>
-  <div class="bottom">
+    <button type="submit" class="btn-login" (click)="login()">Login</button>
+    <div class="bottom">
       <a href="">Register</a>
       <a href="">Forgot password</a>
+    </div>
   </div>
+
 </div>

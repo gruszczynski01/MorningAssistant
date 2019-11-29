@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatDividerModule} from '@angular/material/divider';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatDividerModule} from '@angular/material/divider';
     BrowserAnimationsModule,
     MatIconModule,
     FontAwesomeModule,
-    MatDividerModule
+    MatDividerModule,
+    FormsModule
   ],
   providers: [MainService],
   bootstrap: [AppComponent]

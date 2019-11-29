@@ -5,6 +5,7 @@ import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { interval } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +40,7 @@ export class HomeComponent implements OnInit {
   ];
 
 
-  constructor(private mainService: MainService, private http: HttpClient) { }
+  constructor(private mainService: MainService, private http: HttpClient, private router: Router) { }
 
   dropToDo(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -58,11 +59,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.mainService.getToken().subscribe(data => {
-    //   this.tokenData = data as [any];
-    //   this.tkn = this.tokenData['token'];
-    //   this.mainService.setToken(this.tkn);
-    // });
+    // lepsze sprawdzenie to do
+    if (localStorage.getItem('token') !== undefined) {
+      this.router.navigate(['/login']);
+    }
+    // sprawdzenie czy dobry token, pytajac o dane uzytkownika
+
     this.mainService.getWeatherData('Warszawa').subscribe(data => {
       this.weatherData = data as [any];
     });
