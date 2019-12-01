@@ -68,7 +68,7 @@ MIDDLEWARE = [
 MIDDLEWARE_CLASSES = ['django.middleware.csrf.CsrfViewMiddleware']
 
 CORS_ORIGIN_ALLOW_ALL = True   
-SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = False
 
 ROOT_URLCONF = 'ma_project.urls'
 

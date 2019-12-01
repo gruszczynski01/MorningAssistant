@@ -20,6 +20,19 @@ export class MainService {
     return this.http.post(this.base_url + '/api/v1/obtain-token', body);
   }
 
+  getUserInfo(): Observable<any> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const headers = { 'Authorization': 'Token ' + localStorage.getItem('token') };
+    const httpHeaders = new HttpHeaders(headers);
+    return this.http.get(this.base_url + '/users/me', { headers });
+  }
+  getUserTiles(): Observable<any> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const headers = { 'Authorization': 'Token ' + localStorage.getItem('token') };
+    const httpHeaders = new HttpHeaders(headers);
+    return this.http.get(this.base_url + '/users/tiles', { headers });
+  }
+
   getWeatherData(city: string): Observable<any> {
     // tslint:disable-next-line: object-literal-key-quotes
     const headers = { 'Authorization': 'Token ' + localStorage.getItem('token') };
