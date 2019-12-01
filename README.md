@@ -1,17 +1,14 @@
 # MorningAssistant
 ### An app that'll make your morning easier :)
-## Developer Team
-* Kinga Arendarska
-* Szymon Gruszczynski
-* Dawid Jalowski
-* Michal Jablonski
-
 
 # Project initilization
 0. Set environmental variables on your operating system:
     * MA_SECRET_KEY - key to the Django project
     * MA_WEATHER_API_KEY - key to openweathermap API
     * MA_NEWS_API_KEY - key to newsapi 
+    * EMAIL_HOST_USER_VAR - email to send reset email
+    * EMAIL_HOST_PASSWORD_VAR - email password
+    * DEFAULT_FROM_EMAIL_VAR - default sender name
 
 1. Create virtualenv using venv
 ``` 
