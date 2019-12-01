@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   dataTEMP;
   newsIndex = 0;
   currentTime;
+  tkn;
   todo = [
     'Get to work',
     'Pick up groceries',
@@ -45,9 +46,9 @@ export class HomeComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
     }
   }
 
@@ -57,14 +58,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-      var tkn;
-      this.mainService.getToken().subscribe(data => {
-      this.tokenData = data as [any];
-      tkn = this.tokenData['token'];
-      this.mainService.setToken(tkn);
-      console.log("shit" + tkn);
-    });
-    console.log("shit2" + tkn);
+    // this.mainService.getToken().subscribe(data => {
+    //   this.tokenData = data as [any];
+    //   this.tkn = this.tokenData['token'];
+    //   this.mainService.setToken(this.tkn);
+    // });
     this.mainService.getWeatherData('Warszawa').subscribe(data => {
       this.weatherData = data as [any];
     });
