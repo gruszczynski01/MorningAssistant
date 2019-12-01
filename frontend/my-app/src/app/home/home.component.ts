@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     // lepsze sprawdzenie to do
     if (localStorage.getItem('token') !== undefined) {
-      this.router.navigate(['/login']);
+      //this.router.navigate(['/login']);
     }
     // sprawdzenie czy dobry token, pytajac o dane uzytkownika
 

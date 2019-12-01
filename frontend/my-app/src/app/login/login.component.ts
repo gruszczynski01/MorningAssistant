@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
         console.log(data.token);
         localStorage.setItem('token', data.token);
         // sprawdzenie czy token jest okay - zaladownaie danych uzytkownika (jakis end point np /api/v1/me)
-        this.router.navigate(['/']);
+        //this.router.navigate(['/home']);
         // tslint:disable-next-line: max-line-length
         // moze dobrze zrobic tez sprawdzenie przy ladowaniu home, zeby nie mozna bylo tam wejsc niezalogowanym, albo w html if, z ifno, zeby sie zalogowac, sprawdzenie w ng init
       }, (error: any) => {
