@@ -5,6 +5,8 @@ import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { interval } from 'rxjs';
+import { Router } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-home',
@@ -18,28 +20,33 @@ export class HomeComponent implements OnInit {
   newsData: any;
   tokenData: any;
   token: any;
-  tiles;
-  dataTEMP;
+  tiles = [];
   newsIndex = 0;
-  currentTime;
-  tkn;
-  todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
-
-  done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
+  currentTime: any;
 
 
-  constructor(private mainService: MainService, private http: HttpClient) { }
+  mainToDoOffset = 0;
+  toDoLists: any = [];
+  doneLists: any = [];
+
+
+  // todo = [
+  //   'Get to work',
+  //   'Pick up groceries',
+  //   'Go home',
+  //   'Fall asleep'
+  // ];
+
+  // done = [
+  //   'Get up',
+  //   'Brush teeth',
+  //   'Take a shower',
+  //   'Check e-mail',
+  //   'Walk dog'
+  // ];
+
+
+  constructor(private mainService: MainService, private http: HttpClient, private router: Router) { }
 
   dropToDo(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -58,14 +65,53 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.mainService.getToken().subscribe(data => {
-    //   this.tokenData = data as [any];
-    //   this.tkn = this.tokenData['token'];
-    //   this.mainService.setToken(this.tkn);
-    // });
-    this.mainService.getWeatherData('Warszawa').subscribe(data => {
-      this.weatherData = data as [any];
+    // console.log('token:');
+    // console.log(localStorage.getItem('token'));
+    // lepsze sprawdzenie to do
+    // if (localStorage.getItem('token') === null) {
+    //   this.router.navigate(['/login']);
+    // }
+    // sprawdzenie czy dobry token, pytajac o dane uzytkownika
+    this.mainService.getUserInfo().subscribe(data => {
+      console.log('pomyslnie zalogowano');
+      console.log(data);
+
+    }, (error: any) => {
+      this.router.navigate(['/login']);
     });
+    this.mainService.getUserTiles().subscribe(data => {
+      data.forEach(tile => {
+        console.log(tile);
+        if (tile.tile_type === 'weather') {
+          this.mainService.getWeatherData(tile.category[0]).subscribe(weatherInfo => {
+            tile = weatherInfo as [any];
+            tile.type = 'weather';
+            this.tiles.push(tile);
+          });
+        } else if (tile.tile_type === 'news') {
+          this.mainService.getNewsData(tile.category[0]).subscribe(newsInfo => {
+            tile = newsInfo as [any];
+            tile.type = 'news';
+            this.tiles.push(tile);
+          });
+        } else if (tile.tile_type === 'todolist') {
+
+          tile.type = tile.tile_type;
+          console.log(tile.type);
+          tile.offset = this.mainToDoOffset++;
+          this.toDoLists.push(tile.category);
+          console.log(this.toDoLists[0]);
+          this.doneLists.push([]);
+
+          this.tiles.push(tile);
+          console.log(this.doneLists[0]);
+          console.log(tile.category);
+          console.log('l: '+  this.toDoLists[tile.offset]);
+        }
+
+      });
+    });
+
 
     this.mainService.getNewsData('sports').subscribe(data => {
       this.newsData = data as [any];
@@ -81,31 +127,19 @@ export class HomeComponent implements OnInit {
       this.currentTime = Date.now();
     }, 1000);
 
-    // tslint:disable-next-line: one-variable-per-declaration
-    const news = {};
-    const weather = {};
     const toDoList = {};
     const calendar = {};
 
     // tslint:disable-next-line: no-string-literal
-    news['type'] = 'news';
-    // tslint:disable-next-line: no-string-literal
-    news['class'] = 'small-news-tile';
-    // tslint:disable-next-line: no-string-literal
-    news['category'] = 'sports';
-    // tslint:disable-next-line: no-string-literal
-    weather['type'] = 'weather';
-    // tslint:disable-next-line: no-string-literal
-    weather['class'] = 'small-weather-tile';
-    // tslint:disable-next-line: no-string-literal
-    weather['city'] = 'Legionowo';
-    // tslint:disable-next-line: no-string-literal
-    toDoList['type'] = 'toDoList';
-    // tslint:disable-next-line: no-string-literal
-    calendar['type'] = 'calendar';
+    // toDoList['type'] = 'toDoList';
+    // // tslint:disable-next-line: no-string-literal
+    // calendar['type'] = 'calendar';
 
-    this.tiles = new Array(news, weather, toDoList, calendar);
-
+    // this.tiles.push(calendar);
+    // this.tiles.push(toDoList);
   }
-
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 }
