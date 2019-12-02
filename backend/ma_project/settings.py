@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
     'ma_app',
+    'users',
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',  # <-- Here
@@ -64,9 +65,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+MIDDLEWARE_CLASSES = ['django.middleware.csrf.CsrfViewMiddleware']
 
 CORS_ORIGIN_ALLOW_ALL = True   
-
+SESSION_COOKIE_SECURE = False
 
 ROOT_URLCONF = 'ma_project.urls'
 
@@ -155,3 +157,13 @@ STATICFILES_DIRS = [
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER_VAR') 
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD_VAR') 
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL_VAR') 
