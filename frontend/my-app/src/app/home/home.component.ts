@@ -106,17 +106,20 @@ export class HomeComponent implements OnInit {
           this.tiles.push(tile);
           console.log(this.doneLists[0]);
           console.log(tile.category);
-          console.log('l: '+  this.toDoLists[tile.offset]);
+          console.log('l: ' +  this.toDoLists[tile.offset]);
+        } else if (tile.tile_type === 'calendar') {
+          tile.type = 'calendar';
+          this.tiles.push(tile);
         }
 
       });
     });
 
 
-    this.mainService.getNewsData('sports').subscribe(data => {
-      this.newsData = data as [any];
+    // this.mainService.getNewsData('sports').subscribe(data => {
+    //   this.newsData = data as [any];
 
-    });
+    // });
     setInterval(() => {
       this.newsIndex++;
       if (this.newsIndex === 4) { // tu sie bedzie mozna zapiac na ilosc newsow
