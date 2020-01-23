@@ -7,7 +7,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('me', csrf_exempt(views.Profile.as_view()), name='profile'),
-    path('tiles', views.Tiles.as_view(), name='tiles'),
+    path('me/tiles', views.Tiles.as_view(), name='tiles'),
     path('register', csrf_exempt(views.Register.as_view()), name='register'),
     path('obtain-token', obtain_auth_token, name='api_token_auth'),
     path('password-reset', auth_views.PasswordResetView.as_view()),

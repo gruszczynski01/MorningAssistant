@@ -5,6 +5,8 @@ from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
 from .forms import UserRegisterForm, UpdateProfileForm
 from .models import Tile
+from .serializers import TileSerializer
+from rest_framework.response import Response
 
 class Profile(APIView):
 	permission_classes = (IsAuthenticated,)
@@ -42,3 +44,11 @@ class Tiles(APIView):
 				user_tiles.append({'tile_type': tile.tile_type, 'seq_nr': tile.seq_nr, 'category':cat})
 			return (JsonResponse(user_tiles, safe=False))
 
+	def post(self, request):
+		if request.method == 'POST':
+			serializer = TileSerializer(data=request.data)
+			if serializer.is_valid():
+				serializer.save(user = request.user)
+				print(serializer.data)
+				return HttpResponse("Valid")
+			return HttpResponse(serializer.errors)
