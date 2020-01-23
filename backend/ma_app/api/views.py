@@ -20,5 +20,3 @@ class News(APIView):
 			print(sent_category)
 			news = get_news_from_web(sent_category)
 			return (JsonResponse(news, safe=False))
-
-
