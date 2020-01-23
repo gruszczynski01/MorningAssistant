@@ -15,13 +15,15 @@ import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatDividerModule} from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
+import { TilesManagerComponent } from './tiles-manager/tiles-manager.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    TilesManagerComponent
   ],
   imports: [
     BrowserModule,

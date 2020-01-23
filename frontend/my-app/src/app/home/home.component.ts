@@ -8,6 +8,8 @@ import { interval } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TilesManagerComponent } from '../tiles-manager/tiles-manager.component';
+import { MatDialog } from '@angular/material';
 
 
 @Component({
@@ -49,7 +51,8 @@ export class HomeComponent implements OnInit {
   // ];
 
 
-  constructor(private mainService: MainService, private http: HttpClient, private router: Router, public sanitizer: DomSanitizer) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private mainService: MainService, private http: HttpClient, private router: Router) { }
 
   dropToDo(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -66,9 +69,7 @@ export class HomeComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.tiles, event.previousIndex, event.currentIndex);
   }
-  photoURL(myUrl: string) {
-    return this.sanitizer.bypassSecurityTrustUrl(myUrl);
-  }
+
 
   ngOnInit() {
     // console.log('token:');
@@ -151,5 +152,16 @@ export class HomeComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
+  }
+  openTilesDialog() {
+  //   const dialogRef = this.dialog.open(TilesManagerComponent, {
+  //     width: '250px',
+  //     // data: {name: this.name, animal: this.animal}
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //     // this.animal = result;
+  //   });
   }
 }
