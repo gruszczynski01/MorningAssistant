@@ -20,6 +20,10 @@
           <span>Profile</span>
         </button>
         <button mat-menu-item (click)="logout()">
+          <mat-icon>touch_app</mat-icon>
+          <span>Edit tiles</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
           <mat-icon>exit_to_app</mat-icon>
           <span>Logout</span>
         </button>
@@ -80,9 +84,9 @@
           </div>
           <div *ngIf="tile.type=='calendar'" class="calendar-tile" cdkDrag>
             Kalendarz
-            <iframe
-              src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%237CB342&amp;ctz=Europe%2FWarsaw&amp;src=Z3J1c3pjenluc2tpMDFAZ21haWwuY29t&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=MzVyN29pOGZlZmFtbXMzM2I5OXNyazhzYzhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=NHZhYXM0MjhiZWc5ZDJlbWlqNzYwZ2NqZG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=bWlyNHQ5NDRub2hrc3I1YTY1cXU0MXBmaTRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ajRjaG02M2JvY3RrdGU1anEzMWRhNW1pNnNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=cGwucG9saXNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23F6BF26&amp;color=%2333B679&amp;color=%234285F4&amp;color=%23E67C73&amp;color=%23E67C73&amp;color=%2333B679&amp;color=%230B8043&amp;mode=AGENDA&amp;showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0"
-              width="100%" height="300" frameborder="0" scrolling="no"></iframe> </div>
+            <iframe src="https://calendar.google.com/calendar/embed?src=j4chm63boctkte5jq31da5mi6s%40group.calendar.google.com&ctz=Europe%2FWarsaw" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+          </div>
         </ng-container>
       </div>
     </div>

@@ -7,6 +7,8 @@ import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/dr
 import { interval } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-home',
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
   tiles = [];
   newsIndex = 0;
   currentTime: any;
+  calendarUrl: any;
 
 
   mainToDoOffset = 0;
@@ -46,7 +49,7 @@ export class HomeComponent implements OnInit {
   // ];
 
 
-  constructor(private mainService: MainService, private http: HttpClient, private router: Router) { }
+  constructor(private mainService: MainService, private http: HttpClient, private router: Router, public sanitizer: DomSanitizer) { }
 
   dropToDo(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -62,6 +65,9 @@ export class HomeComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.tiles, event.previousIndex, event.currentIndex);
+  }
+  photoURL(myUrl: string) {
+    return this.sanitizer.bypassSecurityTrustUrl(myUrl);
   }
 
   ngOnInit() {
@@ -106,9 +112,13 @@ export class HomeComponent implements OnInit {
           this.tiles.push(tile);
           console.log(this.doneLists[0]);
           console.log(tile.category);
-          console.log('l: '+  this.toDoLists[tile.offset]);
+          console.log('l: ' +  this.toDoLists[tile.offset]);
+        } else if (tile.tile_type === 'calendar') {
+          // tile.category = tile.category[0];
+          tile.type = 'calendar';
+          this.calendarUrl =  tile.category[0];
+          this.tiles.push(tile);
         }
-
       });
     });
 
