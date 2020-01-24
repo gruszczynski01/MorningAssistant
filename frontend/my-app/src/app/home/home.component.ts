@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TilesManagerComponent } from '../tiles-manager/tiles-manager.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 
 @Component({
@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
   newsIndex = 0;
   currentTime: any;
   calendarUrl: any;
+
+  userDialog: MatDialogRef<TilesManagerComponent>;
 
 
   mainToDoOffset = 0;
@@ -52,7 +54,7 @@ export class HomeComponent implements OnInit {
 
 
   // tslint:disable-next-line: max-line-length
-  constructor(private mainService: MainService, private http: HttpClient, private router: Router) { }
+  constructor(private mainService: MainService, private http: HttpClient, private router: Router, public dialog: MatDialog) { }
 
   dropToDo(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -154,6 +156,19 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   openTilesDialog() {
+    console.log('dialog - start');
+    this.userDialog = this.dialog.open(TilesManagerComponent, {
+      disableClose: false,
+      height: '70vh',
+      width: '70vw',
+      position: {
+        top: '',
+        bottom: '',
+        left: '',
+        right: ''
+    }
+    });
+
   //   const dialogRef = this.dialog.open(TilesManagerComponent, {
   //     width: '250px',
   //     // data: {name: this.name, animal: this.animal}

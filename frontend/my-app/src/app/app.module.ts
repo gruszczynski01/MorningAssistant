@@ -9,13 +9,14 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { MainService } from './services/main.service';
 import { HttpClientModule } from '@angular/common/http';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {MatToolbarModule, MatMenu, MatMenuModule} from '@angular/material';
+import {MatToolbarModule, MatMenu, MatMenuModule, MatDialog, MatDialogModule, MatSelectModule, MatInputModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatDividerModule} from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { TilesManagerComponent } from './tiles-manager/tiles-manager.component';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,14 @@ import { TilesManagerComponent } from './tiles-manager/tiles-manager.component';
     FontAwesomeModule,
     MatDividerModule,
     FormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule,
+    MatSelectModule,
+    TextFieldModule,
+    MatInputModule
+  ],
+  entryComponents: [
+    TilesManagerComponent
   ],
   providers: [MainService],
   bootstrap: [AppComponent]
