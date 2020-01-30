@@ -7,11 +7,15 @@
       <i class="fa fa-user"></i>
     </div>
 
-    <h2>Login form</h2>
+    <h2>Register form</h2>
 
     <div class="box-login">
       <i class="fas fa-envelope"></i>
-      <input type="text" placeholder="Email" [(ngModel)]="username" />
+      <input type="text" placeholder="Username" [(ngModel)]="username" />
+    </div>
+    <div class="box-login">
+      <i class="fas fa-envelope"></i>
+      <input type="text" placeholder="Email" [(ngModel)]="email" />
     </div>
 
     <div class="box-login">
@@ -19,10 +23,11 @@
       <input type="password" placeholder="Password" [(ngModel)]="password" />
     </div>
 
-    <button type="submit" class="btn-login" (click)="login()">Login</button>
+    <button type="submit" class="btn-login" (click)="register()">
+      Register
+    </button>
     <div class="bottom">
-      <a (click)="register()">Register</a>
-      <a href="/api/v1/users/password-reset">Forgot password</a>
+      <a href="#">Login</a>
     </div>
   </div>
 </div>

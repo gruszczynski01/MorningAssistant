@@ -24,9 +24,14 @@ class Profile(APIView):
 
 class Register(View):
 	def post(self, request):
-		if request.method == 'POST':		
+		if request.method == 'POST':
+			print("request")
+			print(request.POST)
 			form = UserRegisterForm(request.POST)
+			print(form)
 			if form.is_valid():
+				print("WCHODZI")
+
 				form.save()
 				username = form.cleaned_data.get('username')
 				return HttpResponse("Valid")
