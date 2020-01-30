@@ -37,7 +37,7 @@
       <h3>Input city name</h3>
       <mat-form-field>
         <mat-label>City name</mat-label>
-        <textarea matInput
+        <textarea [(ngModel)]="weatherCity" matInput
                   cdkTextareaAutosize
                   cdkAutosizeMinRows="1"
                   cdkAutosizeMaxRows="5"></textarea>
@@ -47,7 +47,8 @@
       <h3>Input calendar export link</h3>
       <mat-form-field>
         <mat-label>Iframe link from Google Calendar</mat-label>
-        <textarea matInput
+        <textarea  matInput [(ngModel)]='calendarLink'
+
                   cdkTextareaAutosize
                   cdkAutosizeMinRows="1"
                   cdkAutosizeMaxRows="5"></textarea>
@@ -57,7 +58,7 @@
       <h3>Input like a TITLE;position 1; position 2; position 4; position 5</h3>
       <mat-form-field>
         <mat-label>Input in correct form</mat-label>
-        <textarea matInput
+        <textarea [(ngModel)]='toDoListString'  matInput
                   cdkTextareaAutosize
                   cdkAutosizeMinRows="1"
                   cdkAutosizeMaxRows="5"></textarea>

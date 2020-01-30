@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 export class TilesManagerComponent implements OnInit {
   selected = 'news';
   newsCategory = 'sports';
+  weatherCity = '';
+  calendarLink = '';
+  toDoListString = '';
   tiles = [];
 
 
@@ -25,16 +28,66 @@ export class TilesManagerComponent implements OnInit {
 
   ngOnInit() {
 
-  this.mainService.getUserTiles().subscribe(data => {
-    data.forEach(tile => {
-      console.log(tile);
-      this.tiles.push(tile);
+    this.mainService.getUserTiles().subscribe(data => {
+      data.forEach(tile => {
+        console.log(tile);
+        this.tiles.push(tile);
 
+      });
     });
-  });
   }
   addTile() {
     console.log('ADD TILE');
+    // tslint:disable-next-line: no-unused-expression
+    let newTile = null;
+    switch (this.selected) {
+      case 'news': {
+        console.log('BEDE DODWA NEWS');
+        // tslint:disable-next-line: no-unused-expression
+        // tslint:disable-next-line: label-position
+        newTile = {
+          tile_type: 'news',
+          category: this.newsCategory
+        };
+        console.log(newTile);
+        this.tiles.push(newTile);
+        break;
+      }
+      case 'weather': {
+        console.log('BEDE DODWA weather');
+        newTile = {
+          tile_type: 'weather',
+          category: this.weatherCity
+        };
+        console.log(newTile);
+        this.tiles.push(newTile);
+        break;
+      }
+      case 'calendar': {
+        console.log('BEDE DODWA calendar');
+        newTile = {
+          tile_type: 'calendar',
+          category: this.calendarLink
+        };
+        console.log(newTile);
+        this.tiles.push(newTile);
+        break;
+      }
+      case 'todolist': {
+        console.log('BEDE DODWA to dolist');
+        newTile = {
+          tile_type: 'todolist',
+          category: this.toDoListString
+        };
+        console.log(newTile);
+        this.tiles.push(newTile);
+        break;
+      }
+      default: {
+        console.log('something went wrong');
+        break;
+      }
+    }
   }
 
 }
