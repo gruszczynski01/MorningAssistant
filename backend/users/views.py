@@ -72,6 +72,7 @@ class Tiles(APIView):
 					tile_category = ""
 					for cat in category:
 						tile_category = tile_category+cat+";"
+					tile_category = tile_category[:-1]	
 					dict_data =  {'tile_type': tile_type, 'seq_nr': seq_nr, 'category': tile_category}
 					serializer = TileSerializer(data=dict_data)
 					if serializer.is_valid():
