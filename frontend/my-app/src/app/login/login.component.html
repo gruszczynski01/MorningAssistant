@@ -3,6 +3,7 @@
     <div class="logo">Morning Assistant</div>
   </div>
   <div class="login">
+
     <div class="avatar">
       <i class="fa fa-user"></i>
     </div>
@@ -11,19 +12,19 @@
 
     <div class="box-login">
       <i class="fas fa-envelope"></i>
-      <input type="text" placeholder="Email" [(ngModel)]="username" />
+      <input type="text" placeholder="Email" [(ngModel)]="username">
     </div>
 
     <div class="box-login">
       <i class="fas fa-lock"></i>
-      <input type="password" placeholder="Password" [(ngModel)]="password" />
+      <input type="password" placeholder="Password" [(ngModel)]="password">
     </div>
 
     <button type="submit" class="btn-login" (click)="login()">Login</button>
     <div class="bottom">
-      <a (click)="register()">Register</a>
-
+      <a href="">Register</a>
       <a href="">Forgot password</a>
     </div>
   </div>
+
 </div>

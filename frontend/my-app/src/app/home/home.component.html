@@ -15,7 +15,7 @@
         aria-label="Example icon-button with a menu"></fa-icon>
 
       <mat-menu #menu="matMenu" xPosition="before">
-        <button mat-menu-item>
+        <button mat-menu-item (click)="openUsersProfileDialog()">
           <mat-icon>face</mat-icon>
           <span>Profile</span>
         </button>

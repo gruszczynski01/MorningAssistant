@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TilesManagerComponent } from '../tiles-manager/tiles-manager.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 
 @Component({
@@ -30,6 +31,8 @@ export class HomeComponent implements OnInit {
   calendarUrl: any;
 
   userDialog: MatDialogRef<TilesManagerComponent>;
+  userProfileDialog: MatDialogRef<UserProfileComponent>;
+
 
 
   mainToDoOffset = 0;
@@ -84,7 +87,7 @@ export class HomeComponent implements OnInit {
     this.mainService.getUserInfo().subscribe(data => {
       console.log('pomyslnie zalogowano');
       console.log(data);
-
+      this.mainService.loggedUserData = data;
     }, (error: any) => {
       this.router.navigate(['/login']);
     });
@@ -115,11 +118,11 @@ export class HomeComponent implements OnInit {
           this.tiles.push(tile);
           console.log(this.doneLists[0]);
           console.log(tile.category);
-          console.log('l: ' +  this.toDoLists[tile.offset]);
+          console.log('l: ' + this.toDoLists[tile.offset]);
         } else if (tile.tile_type === 'calendar') {
           // tile.category = tile.category[0];
           tile.type = 'calendar';
-          this.calendarUrl =  tile.category[0];
+          this.calendarUrl = tile.category[0];
           this.tiles.push(tile);
         }
       });
@@ -166,17 +169,31 @@ export class HomeComponent implements OnInit {
         bottom: '',
         left: '',
         right: ''
-    }
+      }
     });
 
-  //   const dialogRef = this.dialog.open(TilesManagerComponent, {
-  //     width: '250px',
-  //     // data: {name: this.name, animal: this.animal}
-  //   });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //     // this.animal = result;
-  //   });
+    //   const dialogRef = this.dialog.open(TilesManagerComponent, {
+    //     width: '250px',
+    //     // data: {name: this.name, animal: this.animal}
+    //   });
+
+    //   dialogRef.afterClosed().subscribe(result => {
+    //     console.log('The dialog was closed');
+    //     // this.animal = result;
+    //   });
+  }
+  openUsersProfileDialog() {
+    this.userProfileDialog = this.dialog.open(UserProfileComponent, {
+      disableClose: false,
+      height: '30vh',
+      width: '30vw',
+      position: {
+        top: '',
+        bottom: '',
+        left: '',
+        right: ''
+      }
+    });
   }
 }
