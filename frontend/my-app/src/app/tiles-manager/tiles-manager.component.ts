@@ -47,40 +47,36 @@ export class TilesManagerComponent implements OnInit {
         // tslint:disable-next-line: label-position
         newTile = {
           tile_type: 'news',
-          category: this.newsCategory
-        };
-        console.log(newTile);
-        this.tiles.push(newTile);
+          category: [this.newsCategory]
+                          };
+
         break;
       }
       case 'weather': {
         console.log('BEDE DODWA weather');
         newTile = {
           tile_type: 'weather',
-          category: this.weatherCity
+          category: [this.weatherCity]
         };
-        console.log(newTile);
-        this.tiles.push(newTile);
+
         break;
       }
       case 'calendar': {
         console.log('BEDE DODWA calendar');
         newTile = {
           tile_type: 'calendar',
-          category: this.calendarLink
+          category: [this.calendarLink ]
         };
-        console.log(newTile);
-        this.tiles.push(newTile);
+
         break;
       }
       case 'todolist': {
         console.log('BEDE DODWA to dolist');
         newTile = {
           tile_type: 'todolist',
-          category: this.toDoListString
+          category: [ this.toDoListString ]
         };
-        console.log(newTile);
-        this.tiles.push(newTile);
+
         break;
       }
       default: {
@@ -88,6 +84,24 @@ export class TilesManagerComponent implements OnInit {
         break;
       }
     }
+    newTile.seq_nr = 0;
+    console.log(newTile);
+    this.tiles.push(newTile);
   }
+  save() {
+    console.log('tu bedzie save');
 
+    console.log(this.tiles.toString());
+    this.mainService.setUserTiles(this.tiles).subscribe( data => {
+      console.log('ZAPIS USER TILES');
+    }, (error: any) => {
+        console.log("BLAD PRZY UPDATE KAFELKOW");
+    });
+  }
+  deleteTile(tile) {
+    const index: number = this.tiles.indexOf(tile);
+    if (index !== -1) {
+        this.tiles.splice(index, 1);
+    }
+  }
 }

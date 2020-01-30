@@ -51,16 +51,16 @@
               </div>
             </div>
           </div>
-          <div *ngIf="tile.type=='news'" class="small-news-tile" title="{{newsData[newsIndex].desc}}" cdkDrag>
+          <div *ngIf="tile.type=='news'" class="small-news-tile" title="{{tile[newsIndex].desc}}" cdkDrag>
             <div class="news-tile-info">
               <div class="news-tile-image">
                 {{tile.category | uppercase}}
-                <img class="newsImage" src={{newsData[newsIndex].imageToUrl}} width="250px" height="150px">
+                <img class="newsImage" src={{tile[newsIndex].imageToUrl}} width="250px" height="150px">
               </div>
             </div>
 
             <div class="news-tile-info">
-              {{newsData[newsIndex].title}}
+              {{tile[newsIndex].title}}
             </div>
           </div>
           <div *ngIf="tile.type=='todolist'" class="to_do-tile" cdkDrag>
