@@ -31,8 +31,8 @@ import { TextFieldModule } from "@angular/cdk/text-field";
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     HomeComponent,
+    RegisterComponent,
     PagenotfoundComponent,
     TilesManagerComponent
   ],
