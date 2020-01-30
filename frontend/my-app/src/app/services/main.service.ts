@@ -19,6 +19,28 @@ export class MainService {
     return this.http.post(this.base_url + "/api/v1/users/obtain-token", body);
   }
 
+  getRegister(
+    username: string,
+    email: string,
+    password1: string,
+    password2: string
+  ): Observable<any> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const body = {
+      username: username,
+      email: email,
+      password1: password1,
+      password2: password2
+    };
+    console.log("DANE KTORE IDA DO REQUESTA");
+    console.log(body);
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.append("Content-Type", "application/json");
+    return this.http.post(this.base_url + "/api/v1/users/register", body, {
+      headers: httpHeaders
+    });
+  }
+
   getUserInfo(): Observable<any> {
     // tslint:disable-next-line: object-literal-key-quotes
     const headers = { Authorization: "Token " + localStorage.getItem("token") };
@@ -27,15 +49,20 @@ export class MainService {
   }
   setUserTiles(tiles): Observable<any> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const headers = { Authorization: 'Token ' + localStorage.getItem("token") };
-    console.log('MOJ TOKEN');
+    const headers = { Authorization: "Token " + localStorage.getItem("token") };
+    console.log("MOJ TOKEN");
     console.log(headers);
     const httpHeaders = new HttpHeaders(headers);
-    httpHeaders.append('Content-Type', 'application/json');
-    httpHeaders.append('Authorization', 'Token ' + localStorage.getItem('token'));
+    httpHeaders.append("Content-Type", "application/json");
+    httpHeaders.append(
+      "Authorization",
+      "Token " + localStorage.getItem("token")
+    );
 
     //return this.http.put(this.base_url + "/api/v1/users/me/tiles", { tiles, headers });
-    return this.http.put(this.base_url + "/api/v1/users/me/tiles", tiles, {headers: headers});
+    return this.http.put(this.base_url + "/api/v1/users/me/tiles", tiles, {
+      headers: headers
+    });
     //.put(url, termin, {headers: this.headers})
   }
   getUserTiles(): Observable<any> {
