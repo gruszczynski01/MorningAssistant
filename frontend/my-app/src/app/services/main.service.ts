@@ -18,6 +18,23 @@ export class MainService {
     const body = { username: username, password: password };
     return this.http.post(this.base_url + "/api/v1/users/obtain-token", body);
   }
+  getRegister(
+    username: string,
+    email: string,
+    password1: string,
+    password2: string
+  ): Observable<any> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const body = {
+      username: username,
+      email: email,
+      password1: password1,
+      password2: password2
+    };
+    console.log("DANE KTORE IDA DO REQUESTA");
+    console.log(body);
+    return this.http.post(this.base_url + "/api/v1/users/register", body);
+  }
 
   getUserInfo(): Observable<any> {
     // tslint:disable-next-line: object-literal-key-quotes
