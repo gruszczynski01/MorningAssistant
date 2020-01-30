@@ -1,0 +1,24 @@
+<div class='container'>
+  <div>
+    <h1>Hi {{firstname}}!</h1>
+
+    Email: {{email}}
+  </div>
+  <div>
+    Username: {{username}}
+  </div>
+  <div>
+    First name:
+    <input [(ngModel)]="firstname">
+  </div>
+  <div>
+    Last name:
+    <input value = {{lastname}}>
+  </div>
+
+  <button (click)="saveUserData()"> Update your data</button>
+
+
+
+
+</div>
