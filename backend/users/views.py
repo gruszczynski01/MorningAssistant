@@ -47,8 +47,34 @@ class Tiles(APIView):
 	def post(self, request):
 		if request.method == 'POST':
 			serializer = TileSerializer(data=request.data)
+			print(request.data)
 			if serializer.is_valid():
 				serializer.save(user = request.user)
 				print(serializer.data)
 				return HttpResponse("Valid")
 			return HttpResponse(serializer.errors)
+
+	def put(self, request):
+		valid = list()
+		if request.method == 'PUT':
+				Tile.objects.filter(user__username=request.user.username).delete()
+				tiles = request.data
+				for tile in tiles:
+					tile_type = tile['tile_type']
+					seq_nr = tile['seq_nr']
+					category = tile['category']
+					tile_category = ""
+					for cat in category:
+						tile_category = tile_category+cat+";"
+					dict_data =  {'tile_type': tile_type, 'seq_nr': seq_nr, 'category': tile_category}
+					serializer = TileSerializer(data=dict_data)
+					if serializer.is_valid():
+						serializer.save(user = request.user)
+						valid.append(True)
+					else:
+						valid.append(False)
+				for i in valid:
+					if i==False:
+						return HttpResponse("Not valid")
+				return HttpResponse("Valid")
+		return HttpResponse("Not valid")
