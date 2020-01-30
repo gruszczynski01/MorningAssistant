@@ -7,6 +7,7 @@ from .forms import UserRegisterForm, UpdateProfileForm
 from .models import Tile
 from .serializers import TileSerializer
 from rest_framework.response import Response
+import json
 
 class Profile(APIView):
 	permission_classes = (IsAuthenticated,)
@@ -24,8 +25,13 @@ class Profile(APIView):
 
 class Register(View):
 	def post(self, request):
-		if request.method == 'POST':		
-			form = UserRegisterForm(request.POST)
+		print(request.body)
+		if request.method == 'POST':
+			body_unicode = request.body.decode('utf-8')
+			body = json.loads(body_unicode)
+			listBody = dict()
+			form = UserRegisterForm(body)
+			print("FORM")
 			if form.is_valid():
 				form.save()
 				username = form.cleaned_data.get('username')

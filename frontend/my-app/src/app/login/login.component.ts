@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   login() {
     console.log("Username: " + this.username);
     console.log("Password: " + this.password);
-    this.mainService.getToken(this.username, this.email).subscribe(
+    this.mainService.getToken(this.username, this.password).subscribe(
       data => {
         console.log(data.token);
         localStorage.setItem("token", data.token);
@@ -36,7 +36,9 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
   register() {
     this.router.navigate(["/register"]);
+  }
   }
 }

@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 /* Links inside the navbar */
 .application-title {
-  color: #FCFFF5;
-  font-family: 'Quicksand', sans-serif;
+  color: #fcfff5;
+  font-family: "Quicksand", sans-serif;
 }
 .example-fill-remaining-space {
   /* This fills the remaining space, by using flexbox.
@@ -20,7 +20,7 @@
 }
 .bodyClass {
   height: 200vh;
-  background-image: url('https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80');
+  background-image: url("https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80");
   background-size: cover;
   background-position: center;
   background-repeat: repeat-y;
@@ -35,7 +35,10 @@
   height: 35px;
   border: 1.5px solid rgb(163, 112, 78);
 }
-/*written by Pysia*/
+.account-icon:hover {
+  opacity: 0.7;
+}
+
 .main-content {
   /* position: relative; */
   padding-top: 30px;
@@ -49,23 +52,23 @@
 /* ********************   cdkDropList   ********************** */
 
 .to_do-tile {
-    font-family: 'Quicksand', sans-serif;
-    margin: 20px;
-    padding: 5vmin;
-    border-radius: 10px;
-    color: rgba(255, 255, 255, 0.87);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    cursor: move;
-    background: linear-gradient(to bottom right, #d3e247, rgb(119, 128, 47));
-    font-size: 22px;
-    flex-wrap: wrap;
+  font-family: "Quicksand", sans-serif;
+  margin: 20px;
+  padding: 5vmin;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: linear-gradient(to bottom right, #d3e247, rgb(119, 128, 47));
+  font-size: 22px;
+  flex-wrap: wrap;
 }
 .small-weather-tile {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   margin: 20px;
   padding: 5vmin;
   border-radius: 10px;
@@ -88,7 +91,7 @@
   font-size: 30px;
 }
 .weather-icon-background {
-  background: linear-gradient(to bottom right, #6ac0eb,  rgb(30, 141, 168));
+  background: linear-gradient(to bottom right, #6ac0eb, rgb(30, 141, 168));
   border: none;
   border-radius: 50%;
   text-align: center;
@@ -108,7 +111,7 @@
 }
 
 .small-news-tile {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   margin: 20px;
   padding: 5vmin;
   border-radius: 10px;
@@ -142,7 +145,7 @@
   border-radius: 10px;
 }
 .calendar-tile {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   margin: 20px;
   padding: 5vmin;
   border-radius: 10px;
@@ -174,13 +177,11 @@
   overflow: hidden;
 }
 
-
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 4px;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-              0 8px 10px 1px rgba(0, 0, 0, 0.14),
-              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .cdk-drag-placeholder {
@@ -200,7 +201,6 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 /* ********************   cdkDropList END  ********************** */
-
 
 /* new classes */
 .to_do-container {
@@ -237,7 +237,6 @@
   background: white;
   font-size: 14px;
   border-radius: 10px;
-
 }
 .done-box {
   margin: 10px;
@@ -260,8 +259,7 @@
   box-sizing: border-box;
   border-radius: 4px;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-              0 8px 10px 1px rgba(0, 0, 0, 0.14),
-              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .cdk-drag-placeholder {

@@ -4,6 +4,7 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
+import { RegisterComponent } from "./register/register.component";
 import { HomeComponent } from "./home/home.component";
 import { PagenotfoundComponent } from "./pagenotfound/pagenotfound.component";
 import { MainService } from "./services/main.service";
@@ -25,7 +26,6 @@ import { MatDividerModule } from "@angular/material/divider";
 import { FormsModule } from "@angular/forms";
 import { TilesManagerComponent } from "./tiles-manager/tiles-manager.component";
 import { TextFieldModule } from "@angular/cdk/text-field";
-import { RegisterComponent } from "./register/register.component";
 
 @NgModule({
   declarations: [
