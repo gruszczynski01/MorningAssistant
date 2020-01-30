@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TilesManagerComponent } from '../tiles-manager/tiles-manager.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
   calendarUrl: any;
 
   userDialog: MatDialogRef<TilesManagerComponent>;
+  userProfileDialog: MatDialogRef<UserProfileComponent>;
 
 
   mainToDoOffset = 0;
@@ -84,6 +86,7 @@ export class HomeComponent implements OnInit {
     this.mainService.getUserInfo().subscribe(data => {
       console.log('pomyslnie zalogowano');
       console.log(data);
+      this.mainService.loggedUserData = data;
 
     }, (error: any) => {
       this.router.navigate(['/login']);
@@ -178,5 +181,18 @@ export class HomeComponent implements OnInit {
   //     console.log('The dialog was closed');
   //     // this.animal = result;
   //   });
+  }
+  openUsersProfileDialog() {
+    this.userProfileDialog = this.dialog.open(UserProfileComponent, {
+      disableClose: false,
+      height: '30vh',
+      width: '30vw',
+      position: {
+        top: '',
+        bottom: '',
+        left: '',
+        right: ''
+      }
+    });
   }
 }
