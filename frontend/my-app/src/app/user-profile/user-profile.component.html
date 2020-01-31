@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="elem">
+  <div class="welcome">
     <h1>Hi {{ firstname }}!</h1>
-
-    Email: {{ email }}
   </div>
+  <div class="elem">Email: {{ email }}</div>
+
   <div class="elem">Username: {{ username }}</div>
   <div class="elem">
     First name:
@@ -13,6 +13,7 @@
     Last name:
     <input [(ngModel)]="lastname" />
   </div>
-
-  <button class="elem" (click)="saveUserData()">Update your data</button>
+  <div class="but">
+    <button class="btn btn1" (click)="saveUserData()">Update your data</button>
+  </div>
 </div>

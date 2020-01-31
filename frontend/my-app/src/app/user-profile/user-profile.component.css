@@ -1,12 +1,34 @@
 .container {
-  display: table-row;
   /* margin-left: 80px; */
   margin: 0;
+  align-content: center;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   /* background-color: bisque; */
 }
 .elem {
   margin: 10px;
+}
+.btn {
+  border: 1px solid #3498dd;
+  background: #3498da;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-family: "montserrat";
+  cursor: pointer;
+  margin: 10px;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.but {
+  align-content: center;
 }

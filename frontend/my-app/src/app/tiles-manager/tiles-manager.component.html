@@ -1,17 +1,16 @@
-<div class = "container">
-  <div class ="left-side">
+<div class="container">
+  <div class="left-side">
     <h1>Manage your tiles</h1>
 
     <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let tile of tiles" cdkDrag>
-        Category: {{tile.tile_type}}
-        Value: {{tile.category}}
-        <button (click) = 'deleteTile(tile)'> DELETE</button>
+        Category: {{ tile.tile_type }} Value: {{ tile.category }}
+        <button (click)="deleteTile(tile)">DELETE</button>
       </div>
     </div>
   </div>
 
-  <div class ="right-side">
+  <div class="right-side">
     <h1>Add new tile</h1>
     <mat-form-field>
       <mat-label>Select an option</mat-label>
@@ -22,7 +21,7 @@
         <mat-option value="todolist">To do list</mat-option>
       </mat-select>
     </mat-form-field>
-    <div *ngIf="selected== 'news'">
+    <div *ngIf="selected == 'news'">
       <h3>Choose news category:</h3>
       <mat-select [(value)]="newsCategory">
         <mat-option value="sports">Sports</mat-option>
@@ -34,28 +33,33 @@
         <mat-option value="science">Science</mat-option>
       </mat-select>
     </div>
-    <div *ngIf="selected== 'weather'">
+    <div *ngIf="selected == 'weather'">
       <h3>Input city name</h3>
       <mat-form-field>
         <mat-label>City name</mat-label>
-        <textarea [(ngModel)]="weatherCity" matInput
-                  cdkTextareaAutosize
-                  cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="5"></textarea>
+        <textarea
+          [(ngModel)]="weatherCity"
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"
+        ></textarea>
       </mat-form-field>
     </div>
-    <div *ngIf="selected== 'calendar'">
+    <div *ngIf="selected == 'calendar'">
       <h3>Input calendar export link</h3>
       <mat-form-field>
         <mat-label>Iframe link from Google Calendar</mat-label>
-        <textarea  matInput [(ngModel)]='calendarLink'
-
-                  cdkTextareaAutosize
-                  cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="5"></textarea>
+        <textarea
+          matInput
+          [(ngModel)]="calendarLink"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"
+        ></textarea>
       </mat-form-field>
     </div>
-    <div *ngIf="selected== 'todolist'">
+    <div *ngIf="selected == 'todolist'">
       <h3>Let's create your new to do list!</h3>
       <!-- <div>
         <mat-form-field>
@@ -70,30 +74,28 @@
       <div>
         <mat-form-field>
           <mat-label>New task</mat-label>
-          <textarea [(ngModel)]='toDoListTask'  matInput
-                    cdkTextareaAutosize
-                    cdkAutosizeMinRows="1"
-                    cdkAutosizeMaxRows="5"></textarea>
+          <textarea
+            [(ngModel)]="toDoListTask"
+            matInput
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+          ></textarea>
         </mat-form-field>
-        <button (click) = "addTask()">Add</button>
+        <button (click)="addTask()">Add</button>
         <div *ngFor="let task of tmpTasks">
-          {{task}}
-          <button (click) = "deleteTask(task)">DELETE</button>
+          {{ task }}
+          <button (click)="deleteTask(task)">DELETE</button>
         </div>
       </div>
-
-
     </div>
 
     <div class="example-button-row">
-
-      <button mat-raised-button (click)="addTile()" color="primary">Add tile</button>
+      <button mat-raised-button (click)="addTile()" color="primary">
+        ADD TILE
+      </button>
       <button mat-raised-button (click)="save()" color="primary">SAVE</button>
-
     </div>
     <!-- <p>You selected: {{selected}}</!-->
   </div>
 </div>
-
-
-

@@ -17,10 +17,6 @@ class Profile(APIView):
 			return (JsonResponse(user_profile, safe=False))
 	def post(self, request):
 		if request.method == 'POST':
-			print("USER")
-			print(request.user)
-			print("BODY")
-			print(request.body)
 			body_unicode = request.body.decode('utf-8')
 			body = json.loads(body_unicode)
 			profile_upd_form = UpdateProfileForm(body, instance=request.user)
@@ -35,9 +31,7 @@ class Register(View):
 		if request.method == 'POST':
 			body_unicode = request.body.decode('utf-8')
 			body = json.loads(body_unicode)
-			listBody = dict()
 			form = UserRegisterForm(body)
-			print("FORM")
 			if form.is_valid():
 				form.save()
 				username = form.cleaned_data.get('username')
