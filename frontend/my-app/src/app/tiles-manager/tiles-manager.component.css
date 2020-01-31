@@ -59,7 +59,7 @@
 
 .container {
   display: flex; /* or inline-flex */
-
+  /* background-color: blueviolet; */
 }
 .right-side {
   display: table-row;
@@ -69,3 +69,19 @@
 .example-button-row {
   padding-top: 50px;
 }
+/* ::ng-deep .container {
+  background-color: rgb(157, 219, 188);
+/*
+  margin: 0;
+  padding: 0; */
+/* }
+body {
+  margin: 0;
+  padding: 0;
+} */
+/* ::ng-deep body {
+  background-color: rgb(157, 219, 188);
+  color: blue;
+  margin: 0;
+  padding: 0;
+} */

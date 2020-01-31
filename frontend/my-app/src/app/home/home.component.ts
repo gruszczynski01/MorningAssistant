@@ -169,7 +169,8 @@ export class HomeComponent implements OnInit {
         bottom: '',
         left: '',
         right: ''
-    }
+      },
+
     });
 
   //   const dialogRef = this.dialog.open(TilesManagerComponent, {
@@ -185,7 +186,7 @@ export class HomeComponent implements OnInit {
   openUsersProfileDialog() {
     this.userProfileDialog = this.dialog.open(UserProfileComponent, {
       disableClose: false,
-      height: '30vh',
+      height: '40vh',
       width: '30vw',
       position: {
         top: '',
