@@ -1,24 +1,18 @@
-<div class='container'>
+<div class="container">
   <div class="elem">
-    <h1>Hi {{firstname}}!</h1>
+    <h1>Hi {{ firstname }}!</h1>
 
-    Email: {{email}}
+    Email: {{ email }}
   </div>
-  <div class="elem">
-    Username: {{username}}
-  </div>
+  <div class="elem">Username: {{ username }}</div>
   <div class="elem">
     First name:
-    <input [(ngModel)]="firstname">
+    <input [(ngModel)]="firstname" />
   </div>
   <div class="elem">
     Last name:
-    <input value = {{lastname}}>
+    <input [(ngModel)]="lastname" />
   </div>
 
-  <button class="elem" (click)="saveUserData()"> Update your data</button>
-
-
-
-
+  <button class="elem" (click)="saveUserData()">Update your data</button>
 </div>
