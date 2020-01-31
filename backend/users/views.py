@@ -17,7 +17,13 @@ class Profile(APIView):
 			return (JsonResponse(user_profile, safe=False))
 	def post(self, request):
 		if request.method == 'POST':
-			profile_upd_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user)
+			print("USER")
+			print(request.user)
+			print("BODY")
+			print(request.body)
+			body_unicode = request.body.decode('utf-8')
+			body = json.loads(body_unicode)
+			profile_upd_form = UpdateProfileForm(body, instance=request.user)
 			if profile_upd_form.is_valid:
 				profile_upd_form.save()
 				return HttpResponse("Valid")
