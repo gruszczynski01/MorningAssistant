@@ -15,6 +15,9 @@ export class TilesManagerComponent implements OnInit {
   weatherCity = '';
   calendarLink = '';
   toDoListString = '';
+  toDoListTask = '';
+  toDoListTitle = '';
+  tmpTasks = [];
   tiles = [];
 
 
@@ -72,6 +75,15 @@ export class TilesManagerComponent implements OnInit {
       }
       case 'todolist': {
         console.log('BEDE DODWA to dolist');
+        // tslint:disable-next-line: prefer-for-of
+        this.toDoListString = '';
+        // this.toDoListString = this.toDoListTitle + ';';
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < this.tmpTasks.length; i++) {
+          this.toDoListString += this.tmpTasks[i] + ';';
+        }
+        this.toDoListString = this.toDoListString.slice(0, -1);
+
         newTile = {
           tile_type: 'todolist',
           category: [ this.toDoListString ]
@@ -97,11 +109,22 @@ export class TilesManagerComponent implements OnInit {
     }, (error: any) => {
         console.log("BLAD PRZY UPDATE KAFELKOW");
     });
+    this.mainService.getUserTiles();
   }
   deleteTile(tile) {
     const index: number = this.tiles.indexOf(tile);
     if (index !== -1) {
         this.tiles.splice(index, 1);
+    }
+  }
+  addTask() {
+    this.tmpTasks.push(this.toDoListTask);
+    this.toDoListTask = '';
+  }
+  deleteTask(task) {
+    const index: number = this.tmpTasks.indexOf(task);
+    if (index !== -1) {
+        this.tmpTasks.splice(index, 1);
     }
   }
 }

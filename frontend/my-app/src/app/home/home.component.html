@@ -10,12 +10,8 @@
     <span class="example-fill-remaining-space"></span>
     <!-- <fa-icon [icon]="faHome"></fa-icon> -->
     <div class="account-icon">
-      <fa-icon
-        [icon]="faUserAlt"
-        mat-icon-button
-        [matMenuTriggerFor]="menu"
-        aria-label="Example icon-button with a menu"
-      ></fa-icon>
+      <fa-icon [icon]="faUserAlt" mat-icon-button [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"></fa-icon>
 
       <mat-menu #menu="matMenu" xPosition="before">
         <button mat-menu-item (click)="openUsersProfileDialog()">
@@ -37,11 +33,7 @@
     <div class="tiles">
       <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
         <ng-container *ngFor="let tile of tiles; let i = index">
-          <div
-            *ngIf="tile.type == 'weather'"
-            class="small-weather-tile"
-            cdkDrag
-          >
+          <div *ngIf="tile.type == 'weather'" class="small-weather-tile" cdkDrag>
             <div class="weather-tile-info">
               {{ tile.city }}
             </div>
@@ -57,21 +49,11 @@
             </div>
           </div>
           <a href="{{ newsData[newsIndex].url }}" target="_blank">
-            <div
-              *ngIf="tile.type == 'news'"
-              class="small-news-tile"
-              title="{{ tile[newsIndex].desc }}"
-              cdkDrag
-            >
+            <div *ngIf="tile.type == 'news'" class="small-news-tile" title="{{ tile[newsIndex].desc }}" cdkDrag>
               <div class="news-tile-info">
                 <div class="news-tile-image">
                   {{ tile.category | uppercase }}
-                  <img
-                    class="newsImage"
-                    src="{{ tile[newsIndex].imageToUrl }}"
-                    width="250px"
-                    height="150px"
-                  />
+                  <img class="newsImage" src="{{ tile[newsIndex].imageToUrl }}" width="250px" height="150px" />
                 </div>
               </div>
 
@@ -81,22 +63,14 @@
             </div>
           </a>
           <div *ngIf="tile.type == 'todolist'" class="to_do-tile" cdkDrag>
+
+
             <div class="to_do-container">
               <h2>To do</h2>
 
-              <div
-                cdkDropList
-                #todoList="cdkDropList"
-                [cdkDropListData]="toDoLists[tile.offset]"
-                [cdkDropListConnectedTo]="[doneList]"
-                class="to_do-list"
-                (cdkDropListDropped)="dropToDo($event)"
-              >
-                <div
-                  class="to_do-box"
-                  *ngFor="let item of toDoLists[tile.offset]"
-                  cdkDrag
-                >
+              <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="toDoLists[tile.offset]"
+                [cdkDropListConnectedTo]="[doneList]" class="to_do-list" (cdkDropListDropped)="dropToDo($event)">
+                <div class="to_do-box" *ngFor="let item of toDoLists[tile.offset]" cdkDrag>
                   {{ item }}
                 </div>
               </div>
@@ -105,19 +79,9 @@
             <div class="to_do-container">
               <h2>Done</h2>
 
-              <div
-                cdkDropList
-                #doneList="cdkDropList"
-                [cdkDropListData]="doneLists[tile.offset]"
-                [cdkDropListConnectedTo]="[todoList]"
-                class="to_do-list"
-                (cdkDropListDropped)="dropToDo($event)"
-              >
-                <div
-                  class="done-box"
-                  *ngFor="let item of doneLists[tile.offset]"
-                  cdkDrag
-                >
+              <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="doneLists[tile.offset]"
+                [cdkDropListConnectedTo]="[todoList]" class="to_do-list" (cdkDropListDropped)="dropToDo($event)">
+                <div class="done-box" *ngFor="let item of doneLists[tile.offset]" cdkDrag>
                   {{ item }}
                 </div>
               </div>
@@ -127,12 +91,7 @@
             Kalendarz
             <iframe
               src="https://calendar.google.com/calendar/embed?src=j4chm63boctkte5jq31da5mi6s%40group.calendar.google.com&ctz=Europe%2FWarsaw"
-              style="border: 0"
-              width="800"
-              height="600"
-              frameborder="0"
-              scrolling="no"
-            ></iframe>
+              style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
           </div>
         </ng-container>
       </div>

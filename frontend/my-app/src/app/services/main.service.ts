@@ -68,6 +68,16 @@ export class MainService {
     });
     //.put(url, termin, {headers: this.headers})
   }
+
+  setUserData(): Observable<any> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const headers = { Authorization: 'Token ' + localStorage.getItem('token') };
+
+    return this.http.post(this.base_url + '/api/v1/users/me', this.loggedUserData, {
+      headers: headers
+    });
+  }
+
   getUserTiles(): Observable<any> {
     // tslint:disable-next-line: object-literal-key-quotes
     const headers = { Authorization: 'Token ' + localStorage.getItem('token') };

@@ -22,6 +22,9 @@ export class UserProfileComponent implements OnInit {
   }
   saveUserData() {
     console.log('save user data');
+    this.mainService.loggedUserData.first_name = this.firstname;
+    this.mainService.loggedUserData.last_name = this.lastname;
+    this.mainService.setUserData().subscribe();
   }
 
 }
